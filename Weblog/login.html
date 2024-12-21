@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - KLord的个人空间</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Long+Cang&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/login-main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="js/auth-config.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/login.js" defer></script>
+    <script src="js/login-effects.js" defer></script>
+</head>
+<body class="login-page">
+    <div class="ripple-container"></div>
+    <div class="cursor-follower"></div>
+    <!-- 添加漂浮装饰元素 -->
+    <div class="floating-elements">
+        <div class="floating-element" style="top: 10%; left: 10%; width: 60px; height: 60px;"></div>
+        <div class="floating-element" style="top: 20%; right: 15%; width: 40px; height: 40px;"></div>
+        <div class="floating-element" style="bottom: 15%; left: 20%; width: 50px; height: 50px;"></div>
+        <div class="floating-element" style="bottom: 25%; right: 10%; width: 45px; height: 45px;"></div>
+    </div>
+    
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <img src="./images/小红毛.jpg" alt="头像" class="login-avatar">
+                <p>记录生活，分享快乐</p>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" placeholder="用户名" value="KLord" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="密码" required>
+                </div>
+                <div class="form-options">
+                    <a href="#" class="forgot-password" onclick="showHint(event)" style="text-decoration: none;">提示</a>
+                </div>
+                <button type="submit" class="login-btn">
+                    <span>登录</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="hintModal" class="hint-modal">
+        <div class="hint-content">
+            <p>上天垂光兮熙予以青春，</p>
+            <p>今日何日兮共此良辰</p>
+        </div>
+    </div>
+</body>
+</html> 

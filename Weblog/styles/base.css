@@ -1,0 +1,145 @@
+/* 基础样式 */
+:root {
+    --primary-color: #90CAF9;
+    --secondary-color: #81C784;
+    --accent-color: #FFD54F;
+    --text-color: #2C3E50;
+    --light-gray: #F5F7FA;
+    --dark-gray: #546E7A;
+    --white: #FFFFFF;
+    --gradient-primary: linear-gradient(135deg, #90CAF9, #BBDEFB);
+    --gradient-secondary: linear-gradient(135deg, #81C784, #A5D6A7);
+    --bg-pattern: radial-gradient(circle at 1px 1px, rgba(129, 140, 248, 0.2) 1px, transparent 0);
+    --max-width: 1200px;
+    --side-nav-width: 280px;
+    --header-height: 60px;
+    --box-shadow: 0 4px 12px rgba(144, 202, 249, 0.1);
+    --hover-shadow: 0 8px 20px rgba(144, 202, 249, 0.15);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --bg-color: #FFFFFF;
+    --nav-hover-color: #90CAF9;
+    --title-font: 'Ma Shan Zheng', cursive;
+    --text-font: 'Long Cang', cursive;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--text-font), system-ui, -apple-system, sans-serif;
+    line-height: 1.8;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    background-image: var(--bg-pattern);
+    background-size: 20px 20px;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* 通用样式 */
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 主内容区域 */
+.main-content {
+    margin-left: var(--side-nav-width);
+    transition: var(--transition-smooth);
+    min-height: 100vh;
+    padding: 30px;
+    background: var(--light-gray);
+}
+
+.main-content.nav-collapsed {
+    margin-left: 40px;
+}
+
+/* 首页欢迎部分 */
+.home {
+    padding: 20px 0 40px;
+}
+
+.welcome-message {
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background: var(--white);
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.welcome-message:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+}
+
+.section-title {
+    font-size: 2rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: 3px;
+}
+
+/* 响应式��计 */
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+} 
+
+/* 本地字体 */
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+} 
+
+/* 标题字体 */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--title-font), sans-serif;
+    letter-spacing: 0.05em;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(100, 181, 246, 0.2);
+} 

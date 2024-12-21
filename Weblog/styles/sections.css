@@ -1,0 +1,967 @@
+/* 重置和基础样式 - 放在文件最前面 */
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* 动态背景基础 - 增加优先级 */
+body {
+    position: relative;
+    background: linear-gradient(
+        -45deg,
+        rgba(142, 68, 173, 0.15),    /* 深紫色 - 增加透明度 */
+        rgba(41, 128, 185, 0.15),    /* 深蓝色 - 增加透明度 */
+        rgba(39, 174, 96, 0.15),     /* 翠绿色 - 增加透明度 */
+        rgba(211, 84, 0, 0.15)       /* 深橙色 - 增加透明度 */
+    ) !important;  /* 添加 !important 确保样式生效 */
+    background-size: 400% 400% !important;
+    animation: gradientBG 15s ease infinite;
+}
+
+/* 增强光点效果 - 确保 z-index 正确 */
+.background-effects {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.background-effects::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(142, 68, 173, 0.2) 0%, transparent 8%),
+        radial-gradient(circle at 80% 20%, rgba(41, 128, 185, 0.2) 0%, transparent 8%),
+        radial-gradient(circle at 40% 70%, rgba(39, 174, 96, 0.2) 0%, transparent 8%),
+        radial-gradient(circle at 70% 60%, rgba(211, 84, 0, 0.2) 0%, transparent 8%);
+    animation: floatingLights 20s linear infinite;
+}
+
+/* 主内容区域调整 */
+.main-content {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(
+        165deg,
+        rgba(15, 23, 42, 0.98),    /* 深蓝黑色 */
+        rgba(30, 41, 59, 0.98)     /* 深蓝灰色 */
+    );
+    min-height: 100vh;
+    margin-left: 240px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+}
+
+/* 添加科技感纹理 */
+.main-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px) 0 0 / 20px 20px,
+        linear-gradient(0deg, rgba(255,255,255,.03) 1px, transparent 1px) 0 0 / 20px 20px;
+    pointer-events: none;
+}
+
+/* 动画定义 */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes floatingLights {
+    0% { transform: translateY(0) translateX(0); }
+    25% { transform: translateY(-10px) translateX(10px); }
+    50% { transform: translateY(0) translateX(0); }
+    75% { transform: translateY(10px) translateX(-10px); }
+    100% { transform: translateY(0) translateX(0); }
+}
+
+/* 各个区块样式 */
+.section-title {
+    font-size: 2rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* 照片墙样式 */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* 日记本样式 */
+.diary-entries {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+} 
+
+/* 首页样式 */
+.home {
+    padding: 40px 0;
+}
+
+/* 欢迎区域 */
+.welcome-section {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, 
+        rgba(214, 122, 127, 0.2) 0%,    /* 暗玫瑰红 */
+        rgba(133, 147, 152, 0.2) 50%,   /* 青灰色 */
+        rgba(175, 145, 120, 0.2) 100%   /* 赭石色 */
+    );
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: fadeInScale 1.2s ease-out;
+}
+
+/* 欢迎标题样式 */
+.welcome-title {
+    font-size: 2.8rem;
+    margin-bottom: 25px;
+    font-family: 'Ma Shan Zheng', cursive;
+    background: linear-gradient(
+        45deg,
+        #D67A7F,    /* 暗玫瑰红 */
+        #859398,    /* 青灰色 */
+        #AF9178,    /* 赭石色 */
+        #7A6563     /* 茶褐色 */
+    );
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    animation: gradientFlow 8s ease infinite;
+    position: relative;
+}
+
+.welcome-text {
+    font-size: 1.3rem;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+    font-family: 'Long Cang', cursive;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 0.5s;
+}
+
+/* 特色卡片网格 */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+/* 特色卡片样式 */
+.feature-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+/* 卡片悬停效果 */
+.feature-card:hover {
+    transform: translateY(-10px) rotate(2deg);
+    box-shadow: var(--hover-shadow);
+    border-color: var(--accent-color);
+}
+
+/* 卡片渐入动画 */
+.feature-card.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 保持悬停效果优先级 */
+.feature-card.fade-in:hover {
+    transform: translateY(-10px) rotate(2deg);
+}
+
+/* 卡片内容样式 */
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    background: var(--white);
+    border: 2px solid var(--text-color);
+    color: var(--text-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-icon i {
+    font-size: 24px;
+    color: var(--text-color);
+}
+
+.feature-card h3 {
+    color: var(--text-color);
+    font-size: 1.3rem;
+    margin: 15px 0 10px;
+    font-weight: 500;
+}
+
+.feature-card p {
+    color: var(--text-color);
+    font-size: 1rem;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* 最新动态时间线 */
+.latest-updates {
+    margin-top: 60px;
+}
+
+.latest-updates h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--primary-color);
+}
+
+.updates-timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: slideIn 0.5s ease forwards;
+    animation-delay: calc(var(--index) * 0.2s);
+}
+
+.timeline-date {
+    min-width: 120px;
+    padding-right: 20px;
+    color: var(--dark-gray);
+    text-align: right;
+}
+
+.timeline-content {
+    flex: 1;
+    background: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    position: relative;
+    border-left: 4px solid var(--secondary-color);
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    background: var(--white);
+    transform: rotate(45deg);
+    box-shadow: var(--box-shadow);
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .welcome-title {
+        font-size: 2rem;
+    }
+    
+    .timeline-item {
+        flex-direction: column;
+    }
+    
+    .timeline-date {
+        text-align: left;
+        margin-bottom: 10px;
+    }
+} 
+
+/* 区块切换效果 */
+.section {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.section.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 欢迎标题动画效果 */
+@keyframes titleBounce {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 标签样式 */
+.diary-tags span {
+    background: var(--gradient-secondary);
+    color: var(--white);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+/* 引用样式 */
+blockquote {
+    border-left: 4px solid var(--accent-color);
+    padding-left: 20px;
+    font-style: italic;
+    color: var(--primary-color);
+}
+
+/* 右上角退出按钮样式 */
+.header-actions {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.logout-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--white);
+    border: none;
+    border-radius: 30px;
+    color: var(--primary-color);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--box-shadow);
+}
+
+.logout-button i {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+.logout-button:hover {
+    background: var(--gradient-primary);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--hover-shadow);
+}
+
+.logout-button:hover i {
+    transform: translateX(3px);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .header-actions {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .logout-button span {
+        display: none;
+    }
+    
+    .logout-button {
+        padding: 10px;
+    }
+    
+    .logout-button i {
+        margin: 0;
+    }
+}
+
+/* 添加渐入动画 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 欢迎文字逐字显示效果 */
+.welcome-title span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+    animation: charAnimation 0.5s ease forwards;
+    position: relative;
+}
+
+/* 字符动画 */
+@keyframes charAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.8);
+    }
+    60% {
+        transform: translateY(-10px) scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 变流动动画 */
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 添加光晕效果 */
+.welcome-title::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle,
+        rgba(214, 122, 127, 0.2),    /* 暗玫瑰红 */
+        rgba(133, 147, 152, 0.2),    /* 青灰色 */
+        transparent 70%
+    );
+    filter: blur(20px);
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    animation: glowPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+    0% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+/* 收藏集样式 */
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 25px;
+}
+
+.collection-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    min-height: 350px;
+    background-size: 200% 200%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+/* 各种收藏项 */
+.collection-item.classic {
+    background: var(--color);
+    color: var(--textColor);
+    border: 2px solid var(--borderColor);
+    font-family: 'Ma Shan Zheng', cursive;
+}
+
+.collection-item.modern {
+    background: var(--color);
+    color: var(--textColor);
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.collection-item.nature {
+    background: var(--color);
+    color: var(--textColor);
+    border: 3px solid var(--borderColor);
+}
+
+.collection-item.elegant {
+    background: var(--color);
+    color: var(--textColor);
+}
+
+.collection-item.ink {
+    background: var(--color);
+    color: var(--textColor);
+    border: 8px var(--borderStyle, double) rgba(255,255,255,0.15);
+}
+
+/* 日记本样式 */
+.diary-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 20px;
+}
+
+.diary-entry {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 15px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 关于我页面样式 */
+.about-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+    padding: 20px;
+}
+
+.about-profile {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    padding: 25px;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid rgba(255,255,255,0.3);
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info {
+    background: rgba(255,255,255,0.2);
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.about-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.about-section {
+    background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    border-radius: 15px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.about-section:nth-child(2) {
+    background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+}
+
+.about-section:nth-child(3) {
+    background: linear-gradient(135deg, #434343 0%, #000000 100%);
+    color: #fff;
+}
+
+.about-section h3 {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hobby-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 15px;
+}
+
+.hobby-item {
+    background: rgba(255,255,255,0.2);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.hobby-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.2);
+}
+
+.favorite-quotes {
+    font-family: 'Long Cang', cursive;
+    font-size: 1.3em;
+    line-height: 1.6;
+    padding: 20px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    position: relative;
+}
+
+.favorite-quotes::before {
+    content: '"';
+    font-size: 3em;
+    position: absolute;
+    left: 10px;
+    top: -10px;
+    opacity: 0.3;
+}
+
+.contact-info {
+    display: grid;
+    gap: 15px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.contact-item:hover {
+    transform: translateX(10px);
+    background: rgba(255,255,255,0.2);
+}
+
+.contact-item i {
+    font-size: 1.2em;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-sections {
+        grid-template-columns: 1fr;
+    }
+    
+    .profile-image {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .hobby-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .about-section {
+        padding: 15px;
+    }
+    
+    .favorite-quotes {
+        font-size: 1.2em;
+        padding: 15px;
+    }
+}
+
+/* 动画效果 */
+.about-profile, .about-section {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.about-section:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.about-section:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 动画效果 */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 响应式样式 */
+@media (max-width: 768px) {
+    .collection-grid {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+    
+    /* 其他响应式样式... */
+}
+
+/* 添加新的动画效果 */
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .welcome-title {
+        font-size: 2rem;
+    }
+    
+    .welcome-text {
+        font-size: 1.1rem;
+        padding: 0 15px;
+    }
+    
+    .welcome-section {
+        margin: 20px;
+        padding: 30px 15px;
+    }
+}
+
+/* 首页布局调整 */
+.intro-section {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 300px; /* 主内容和音律分开 */
+    gap: 40px;
+    position: relative;
+}
+
+/* 主要内容区域 */
+.intro-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* 音律跳动特效容器 */
+.audio-visualizer {
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    height: 100px;
+    z-index: 1;
+}
+
+/* 音律柱状体 */
+.audio-bar {
+    width: 4px;
+    height: 40px;
+    background: linear-gradient(
+        to top,
+        rgba(96, 165, 250, 0.3),
+        rgba(59, 130, 246, 0.6)
+    );
+    border-radius: 2px;
+    animation: audioJump 1.2s ease-in-out infinite;
+    transform-origin: bottom;
+}
+
+/* 为每个柱体设置不同的动画延迟 */
+.audio-bar:nth-child(1) { animation-delay: 0.2s; }
+.audio-bar:nth-child(2) { animation-delay: 0.4s; }
+.audio-bar:nth-child(3) { animation-delay: 0.1s; }
+.audio-bar:nth-child(4) { animation-delay: 0.3s; }
+.audio-bar:nth-child(5) { animation-delay: 0.5s; }
+.audio-bar:nth-child(6) { animation-delay: 0.2s; }
+.audio-bar:nth-child(7) { animation-delay: 0.4s; }
+.audio-bar:nth-child(8) { animation-delay: 0.1s; }
+
+/* 音律跳动动画 */
+@keyframes audioJump {
+    0%, 100% {
+        height: 40px;
+        background: linear-gradient(
+            to top,
+            rgba(96, 165, 250, 0.3),
+            rgba(59, 130, 246, 0.6)
+        );
+    }
+    50% {
+        height: 60px;
+        background: linear-gradient(
+            to top,
+            rgba(96, 165, 250, 0.4),
+            rgba(59, 130, 246, 0.8)
+        );
+    }
+}
+
+/* 粒子游戏容器 */
+.particle-game {
+    width: 100%;
+    height: 400px;
+    background: rgba(15, 23, 42, 0.3);
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 30px 0;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+#particleCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 游戏信息样式 */
+.game-info {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px 20px;
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+    z-index: 1;
+}
+
+.game-title {
+    font-weight: 600;
+    color: #60a5fa;
+    margin-right: 15px;
+}
+
+.game-score {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 响应式调整 */
+@media (max-width: 1024px) {
+    .intro-section {
+        grid-template-columns: 1fr;
+    }
+
+    .audio-visualizer {
+        position: relative;
+        top: 0;
+        height: 150px;
+        flex-direction: row;
+    }
+
+    .audio-bars {
+        flex-direction: row;
+        height: auto;
+        width: 100%;
+    }
+
+    .particle-game {
+        height: 300px;
+    }
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KLord的个人空间</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/nav.css">
+    <link rel="stylesheet" href="styles/sections.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Long+Cang&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 添加背景效果容器 -->
+    <div class="background-effects"></div>
+    
+    <!-- 左侧导航栏 -->
+    <nav class="side-nav">
+        <div class="nav-content">
+            <div class="profile-section"></div>
+            <ul class="nav-links"></ul>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>退出登录</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main class="main-content">
+        <!-- 首页部分 -->
+        <section id="home" class="section active">
+            <div class="container">
+                <div class="intro-section">
+                    <h1 class="intro-title">
+                        Hello I'm <span class="highlight">KLord</span>
+                    </h1>
+                    <div class="intro-subtitle">
+                        <span class="role">👨‍💻 Full Stack Developer</span>
+                    </div>
+                    <p class="intro-text">
+                        <span class="text-icon">📝</span>
+                        The only way to do <span class="accent">great</span> is to <span class="accent">love</span> what you do.
+                    </p>
+                    
+                    <!-- 社交链接 -->
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-weixin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-qq"></i></a>
+                    </div>
+
+                    <!-- 音律跳动特效 -->
+                    <div class="audio-visualizer">
+                        <div class="audio-bar"></div>
+                        <div class="audio-bar"></div>
+                        <div class="audio-bar"></div>
+                        <div class="audio-bar"></div>
+                        <div class="audio-bar"></div>
+                        <div class="audio-bar"></div>
+                        <div class="audio-bar"></div>
+                        <div class="audio-bar"></div>
+                    </div>
+                </div>
+
+                <!-- 粒子游戏 -->
+                <div class="particle-game">
+                    <canvas id="particleCanvas"></canvas>
+                    <div class="game-info">
+                        <span class="game-title">Particle Chaser</span>
+                        <span class="game-score">Score: <span id="score">0</span></span>
+                    </div>
+                </div>
+
+                <!-- 站点导航卡片 -->
+                <div class="site-section">
+                    <h2 class="section-title">
+                        <span class="icon">🌐</span> site
+                    </h2>
+                    <div class="site-cards">
+                        <a href="#" class="site-card">
+                            <div class="card-icon">🤖</div>
+                            <div class="card-content">
+                                <h3>博客</h3>
+                                <p>记录美好日常</p>
+                            </div>
+                        </a>
+                        <a href="#" class="site-card">
+                            <div class="card-icon">👻</div>
+                            <div class="card-content">
+                                <h3>云盘</h3>
+                                <p>存储收藏文件</p>
+                            </div>
+                        </a>
+                        <a href="#" class="site-card">
+                            <div class="card-icon">🎀</div>
+                            <div class="card-content">
+                                <h3>实验室</h3>
+                                <p>收集有趣html作品</p>
+                            </div>
+                        </a>
+                        <a href="#" class="site-card">
+                            <div class="card-icon">🎀</div>
+                            <div class="card-content">
+                                <h3>实验室</h3>
+                                <p>收集有趣html作品</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 收藏集部分 -->
+        <section id="collection" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">我的收藏集</h2>
+                    <div class="section-tabs"></div>
+                </div>
+                <div class="collection-grid"></div>
+            </div>
+        </section>
+
+        <!-- 日记本部分 -->
+        <section id="diary" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">我的日记本</h2>
+                    <div class="diary-filters">
+                        <input type="text" class="diary-search" placeholder="搜索日记...">
+                        <select class="diary-month"></select>
+                    </div>
+                </div>
+                <div class="diary-list"></div>
+            </div>
+        </section>
+
+        <!-- 关于我部分 -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">关于</h2>
+                </div>
+                <div class="about-content">
+                    <div class="about-profile">
+                        <div class="profile-image">
+                            <img src="images/profile.jpg" alt="个人照片">
+                        </div>
+                        <div class="profile-info"></div>
+                    </div>
+                    <div class="about-sections">
+                        <div class="about-section">
+                            <h3><i class="fas fa-heart"></i> 兴趣爱好</h3>
+                            <ul class="hobby-list"></ul>
+                        </div>
+                        <div class="about-section">
+                            <h3><i class="fas fa-quote-left"></i> 最爱的句子</h3>
+                            <div class="favorite-quotes"></div>
+                        </div>
+                        <div class="about-section">
+                            <h3><i class="fas fa-paper-plane"></i> 联系方式</h3>
+                            <div class="contact-info"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 汉堡菜单按钮 -->
+    <button class="menu-toggle" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- 脚本文件 -->
+    <script src="js/config.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/mobile.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/particle-game.js"></script>
+</body>
+</html> 
